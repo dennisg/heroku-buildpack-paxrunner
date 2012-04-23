@@ -39,8 +39,7 @@ if [ -x $PAX_DIR/bin/pax-run.sh ] ; then
 	echo "-----> Using Pax Runner $PAX_VER....."
 else
 	echo -n "-----> Installing Pax Runner $PAX_VER....."
-	curl --silent --max-time 60 --location $PAX_URL -o $CACHE_DIR/pax-runner-$PAX_VER.zip
-	unzip $CACHE_DIR/pax-runner-$PAX_VER.zip -d $VENDORING_DIR -o
+	curl --silent --max-time 60 --location $PAX_URL | tar xz
 	if [ $? -eq 0 ]; then  
 		echo "done!" 
 	fi

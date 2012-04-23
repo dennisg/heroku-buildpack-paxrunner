@@ -1,0 +1,3 @@
+PAX_VER="1.7.6"
+PAX_HOME=/app/.buildpack/pax-runner-$PAX_VER
+PAX_URL="http://search.maven.org/remotecontent?filepath=org/ops4j/pax/runner/pax-runner-assembly/1.7.6/pax-runner-assembly-1.7.6-jdk15.zip"

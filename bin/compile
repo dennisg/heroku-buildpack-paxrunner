@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+# fail fast
+set -e
+
+. $(dirname $0)/common
+
+
+BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
+# parse args
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+mkdir -p $CACHE_DIR
+
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+# BUILD_DIR is (during this stage) a temporary directory. During execution
+# of your slug it'll be known as '/app'.
+
+VENDORING_DIR="$BUILD_DIR/.buildpack"
+PAX_DIR="$VENDORING_DIR/pax-runner-$ANT_VER"
+
+#create the cache dir if it doesn't exist
+mkdir -p $VENDORING_DIR
+
+# change to vendoring dir to install apache ant
+cd $VENDORING_DIR
+
+if [ -x $PAX_DIR/bin/pax-run.sh ] ; then
+    #assuming Pax Runner is already installed...
+	echo "-----> Using Pax Runner $PAX_VER....."
+else
+	echo -n "-----> Installing Pax Runner $PAX_VER....."
+	curl --silent --max-time 60 --location $PAX_URL -o $CACHE_DIR/pax-runner-$PAX_VER.zip
+	unzip $CACHE_DIR/pax-runner-$PAX_VER.zip -d $VENDORING_DIR -o
+	if [ $? -eq 0 ]; then  
+		echo "done!" 
+	fi
+fi
+
+if [ ! -f $BUILD_DIR/paxrunner ] ; then
+	echo "Failed to build app with Pax Runner"
+fi

@@ -14,11 +14,11 @@ config_vars:
   PATH: /usr/local/bin:/usr/bin:/bin:$PAX_HOME/bin
   JAVA_OPTS: -Xmx384m -Xss512k -XX:+UseCompressedOops
   OSGI_FW: felix
-  OSGI_FW_VER: 4.0.2
+  OSGI_VER: 4.0.2
   PROVISIONING_URL: scandir:bundles
 addons:
   shared-database:5mb
 default_process_types:
-  web: pax-run.sh --platform=\$OSGI_FW --version=\$\{OSGI_FW_VER\} --console=false --vmo="-Dorg.osgi.service.http.port=\$PORT" $PROVISIONING_URL 
+  web: pax-run.sh --platform=\$OSGI_FW --version=\$OSGI_VER --console=false --vmo="-Dorg.osgi.service.http.port=\$PORT" $PROVISIONING_URL 
 
 EOF

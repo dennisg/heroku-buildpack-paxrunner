@@ -35,14 +35,14 @@ The Pax Runner distribution is unpacked inside your slug directory in '.buildpac
 
 Default Procfile:
 
-	web: pax-run.sh --platform=${OSGI_FW} --version=${OSGI_FW_VER} --console=false --vmo="-Dorg.osgi.service.http.port=$PORT" $PROVISIONING_URL
+	web: pax-run.sh --platform=${OSGI_FW} --version=${OSGI_VER} --console=false --vmo="-Dorg.osgi.service.http.port=$PORT" $PROVISIONING_URL
 	
-where _OSGI_FW=felix_, OSGI_FW_VER_=4.0.2_, PORT supplied by Heroku and _PROVISIONING_URL=scandir:bundles_. This means that the default setup will start up an OSGi framework based on Felix, version 4.0.2 starting all bundles in 'bundles'.
+where _OSGI_FW=felix_, OSGI_VER_=4.0.2_, PORT supplied by Heroku and _PROVISIONING_URL=scandir:bundles_. This means that the default setup will start up an OSGi framework based on Felix, version 4.0.2 starting all bundles in 'bundles'.
 
 Modifying the default OSGi framework is as simple as this:
 
 	heroku config:add OSGI_FW=equinox
-	heroku config:add OSGI_FW_VER=3.7.0
+	heroku config:add OSGI_VER=3.7.0
 
 
 Provisioning URL

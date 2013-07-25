@@ -26,7 +26,7 @@ function indent() {
 # of your slug it'll be known as '/app'.
 
 VENDORING_DIR="$BUILD_DIR/.buildpack"
-PAX_DIR="$VENDORING_DIR/pax-runner-$ANT_VER"
+PAX_DIR="$VENDORING_DIR/pax-runner-$PAX_VER"
 
 #create the cache dir if it doesn't exist
 mkdir -p $VENDORING_DIR

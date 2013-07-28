@@ -15,7 +15,7 @@ config_vars:
   JAVA_OPTS: -Xmx384m -Xss512k -XX:+UseCompressedOops
   OSGI_FW: felix
   OSGI_VER: 4.0.2
-  PROVISIONING_URL: scan-dir:bundles
+  PROVISIONING_URL: scan-dir:/app/bundles
 addons:
   shared-database:5mb
 default_process_types:
